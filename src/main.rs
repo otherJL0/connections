@@ -8,6 +8,16 @@ struct SquareProps {
 }
 
 #[component]
+fn Title() -> Element {
+    rsx! {
+        div {
+            id: "title",
+            h1 { "😺 Connecticat 😺" }
+        }
+    }
+}
+
+#[component]
 fn ConnectionsApp(word: String) -> Element {
     tracing::info!("Rendered with word: {}", word);
     rsx! {
@@ -26,10 +36,7 @@ fn main() {
 fn App() -> Element {
     rsx! {
         document::Stylesheet { href : CSS }
-        div {
-
-        "Connection Game for Bubs"
-    }
+        Title {}
         div {
             class: "grid-container",
             ConnectionsApp{ word: "Lily" }
