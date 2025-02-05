@@ -1,4 +1,4 @@
-use dioxus::{logger::tracing, prelude::*};
+use dioxus::prelude::*;
 
 static CSS: Asset = asset!("/assets/main.css");
 #[derive(Props, PartialEq, Clone)]
@@ -19,7 +19,6 @@ fn Title() -> Element {
 
 #[component]
 fn WordTile(word: String) -> Element {
-    tracing::info!("Rendered with word: {}", word);
     rsx! {
         div {
             class: "grid-item",
