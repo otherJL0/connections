@@ -18,12 +18,46 @@ fn Title() -> Element {
 }
 
 #[component]
-fn ConnectionsApp(word: String) -> Element {
+fn WordTile(word: String) -> Element {
     tracing::info!("Rendered with word: {}", word);
     rsx! {
         div {
             class: "grid-item",
             "{word}",
+        }
+    }
+}
+
+#[component]
+fn Game() -> Element {
+    rsx! {
+        div {
+            class: "grid-container",
+            WordTile{ word: "Lily" }
+            WordTile{ word: "Kippy" }
+            WordTile{ word: "Lily" }
+            WordTile{ word: "Kippy" }
+            WordTile{ word: "Lily" }
+            WordTile{ word: "Kippy" }
+            WordTile{ word: "Lily" }
+            WordTile{ word: "Kippy" }
+            WordTile{ word: "Lily" }
+            WordTile{ word: "Kippy" }
+            WordTile{ word: "Lily" }
+            WordTile{ word: "Kippy" }
+            WordTile{ word: "Lily" }
+            WordTile{ word: "Kippy" }
+            WordTile{ word: "Lily" }
+            WordTile{ word: "Kippy" }
+        }
+        div {
+            id: "buttons-container",
+            div {
+                id: "buttons",
+                button { id: "deselect", "Deselect All"}
+                button { id: "shuffle", "Shuffle"}
+                button { id: "submit", "Submit"}
+            }
         }
     }
 }
@@ -37,33 +71,6 @@ fn App() -> Element {
     rsx! {
         document::Stylesheet { href : CSS }
         Title {}
-        div {
-            class: "grid-container",
-            ConnectionsApp{ word: "Lily" }
-            ConnectionsApp{ word: "Kippy" }
-            ConnectionsApp{ word: "Lily" }
-            ConnectionsApp{ word: "Kippy" }
-            ConnectionsApp{ word: "Lily" }
-            ConnectionsApp{ word: "Kippy" }
-            ConnectionsApp{ word: "Lily" }
-            ConnectionsApp{ word: "Kippy" }
-            ConnectionsApp{ word: "Lily" }
-            ConnectionsApp{ word: "Kippy" }
-            ConnectionsApp{ word: "Lily" }
-            ConnectionsApp{ word: "Kippy" }
-            ConnectionsApp{ word: "Lily" }
-            ConnectionsApp{ word: "Kippy" }
-            ConnectionsApp{ word: "Lily" }
-            ConnectionsApp{ word: "Kippy" }
-        }
-        div {
-            id: "buttons-container",
-            div {
-                id: "buttons",
-                button { id: "deselect", "Deselect All"}
-                button { id: "shuffle", "Shuffle"}
-                button { id: "submit", "Submit"}
-            }
-        }
+        Game {}
     }
 }
