@@ -25,38 +25,6 @@ body {
   aspect-ratio: 1 / 1;
 }
 
-#hero {
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-#links {
-    width: 400px;
-    text-align: left;
-    font-size: x-large;
-    color: white;
-    display: flex;
-    flex-direction: column;
-}
-
-#links a {
-    color: white;
-    text-decoration: none;
-    margin-top: 20px;
-    margin: 10px 0px;
-    border: white 1px solid;
-    border-radius: 5px;
-    padding: 10px;
-}
-
-#links a:hover {
-    background-color: #1f1f1f;
-    cursor: pointer;
-}
-
 #title {
     text-align: center;
     padding-top: 10px;
@@ -65,6 +33,33 @@ body {
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
+}
+
+#buttons-container {
+  max-width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+#buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#deselect { background-color: gray }
+#shuffle { background-color: gray; }
+#submit { background-color: gray; }
+
+#deselect, #shuffle, #submit {
+    padding: 5px 30px 5px 30px;
+    border-radius: 3px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: rgb(230, 230, 230)
 }
 
 

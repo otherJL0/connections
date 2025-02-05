@@ -56,5 +56,14 @@ fn App() -> Element {
             ConnectionsApp{ word: "Lily" }
             ConnectionsApp{ word: "Kippy" }
         }
+        div {
+            id: "buttons-container",
+            div {
+                id: "buttons",
+                button { id: "deselect", "Deselect All"}
+                button { id: "shuffle", "Shuffle"}
+                button { id: "submit", "Submit"}
+            }
+        }
     }
 }
