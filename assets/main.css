@@ -1,9 +1,9 @@
 /* App-wide styling */
 body {
-    background-color: #0f1116;
-    color: #ffffff;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 20px;
+  background-color: #0f1116;
+  color: #ffffff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 20px;
 }
 
 .grid-container {
@@ -26,13 +26,13 @@ body {
 }
 
 #title {
-    text-align: center;
-    padding-top: 10px;
-    border-bottom: 1px solid #a8a8a8;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
+  text-align: center;
+  padding-top: 10px;
+  border-bottom: 1px solid #a8a8a8;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 #buttons-container {
@@ -42,25 +42,32 @@ body {
 }
 
 #buttons {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 20px;
-    padding-top: 20px;
-    padding-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
-#deselect { background-color: gray }
-#shuffle { background-color: gray; }
-#submit { background-color: gray; }
-
-#deselect, #shuffle, #submit {
-    padding: 5px 30px 5px 30px;
-    border-radius: 3px;
-    font-size: 1rem;
-    font-weight: bold;
-    color: rgb(230, 230, 230)
+#deselect {
+  background-color: gray
 }
 
+#shuffle {
+  background-color: gray;
+}
 
+#submit {
+  background-color: gray;
+}
 
+#deselect,
+#shuffle,
+#submit {
+  padding: 5px 30px 5px 30px;
+  border-radius: 3px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: rgb(230, 230, 230)
+}
