@@ -1,4 +1,5 @@
 use dioxus::prelude::*;
+use rand::seq::SliceRandom;
 
 static CSS: Asset = asset!("/assets/main.css");
 #[derive(Props, PartialEq, Clone)]
@@ -28,34 +29,57 @@ fn WordTile(word: String) -> Element {
 }
 
 #[component]
-fn Game() -> Element {
+fn Grid(words: Vec<String>) -> Element {
     rsx! {
         div {
             class: "grid-container",
-            WordTile{ word: "Lily" }
-            WordTile{ word: "Kippy" }
-            WordTile{ word: "Lily" }
-            WordTile{ word: "Kippy" }
-            WordTile{ word: "Lily" }
-            WordTile{ word: "Kippy" }
-            WordTile{ word: "Lily" }
-            WordTile{ word: "Kippy" }
-            WordTile{ word: "Lily" }
-            WordTile{ word: "Kippy" }
-            WordTile{ word: "Lily" }
-            WordTile{ word: "Kippy" }
-            WordTile{ word: "Lily" }
-            WordTile{ word: "Kippy" }
-            WordTile{ word: "Lily" }
-            WordTile{ word: "Kippy" }
+            for word in words {
+                WordTile { word }
+            }
         }
+    }
+}
+
+#[component]
+fn Game() -> Element {
+    let mut words = use_signal(|| {
+        vec![
+            "a".to_string(),
+            "b".to_string(),
+            "c".to_string(),
+            "d".to_string(),
+            "e".to_string(),
+            "f".to_string(),
+            "g".to_string(),
+            "h".to_string(),
+            "i".to_string(),
+            "j".to_string(),
+            "k".to_string(),
+            "l".to_string(),
+            "m".to_string(),
+            "n".to_string(),
+            "o".to_string(),
+            "p".to_string(),
+        ]
+    });
+
+    let deselect = move |evt| {};
+    let shuffle = move |_| {
+        words.set({
+            words().shuffle(&mut rand::rng());
+            words()
+        });
+    };
+    let submit = move |evt| {};
+    rsx! {
+        Grid { words: words() }
         div {
             id: "buttons-container",
             div {
                 id: "buttons",
-                button { id: "deselect", "Deselect All"}
-                button { id: "shuffle", "Shuffle"}
-                button { id: "submit", "Submit"}
+                button { onclick: deselect, id: "deselect", "Deselect All"}
+                button { onclick: shuffle, id: "shuffle", "Shuffle"}
+                button { onclick: submit, id: "submit", "Submit"}
             }
         }
     }
