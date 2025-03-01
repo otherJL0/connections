@@ -64,12 +64,7 @@ fn Game() -> Element {
     });
 
     let deselect = move |evt| {};
-    let shuffle = move |_| {
-        words.set({
-            words().shuffle(&mut rand::rng());
-            words()
-        });
-    };
+    let shuffle = move |_| words.with_mut(|w| w.shuffle(&mut rand::rng()));
     let submit = move |evt| {};
     rsx! {
         Grid { words: words() }
