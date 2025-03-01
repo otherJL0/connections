@@ -8,6 +8,15 @@ struct SquareProps {
     highlighted: bool,
 }
 
+impl SquareProps {
+    fn new(word: &str, highlighted: bool) -> Self {
+        Self {
+            word: word.to_string(),
+            highlighted,
+        }
+    }
+}
+
 #[component]
 fn Title() -> Element {
     rsx! {
@@ -19,17 +28,17 @@ fn Title() -> Element {
 }
 
 #[component]
-fn WordTile(word: String) -> Element {
+fn WordTile(word: SquareProps) -> Element {
     rsx! {
         div {
             class: "grid-item",
-            "{word}",
+            "{word.word}",
         }
     }
 }
 
 #[component]
-fn Grid(words: Vec<String>) -> Element {
+fn Grid(words: Vec<SquareProps>) -> Element {
     rsx! {
         div {
             class: "grid-container",
@@ -44,22 +53,22 @@ fn Grid(words: Vec<String>) -> Element {
 fn Game() -> Element {
     let mut words = use_signal(|| {
         vec![
-            "a".to_string(),
-            "b".to_string(),
-            "c".to_string(),
-            "d".to_string(),
-            "e".to_string(),
-            "f".to_string(),
-            "g".to_string(),
-            "h".to_string(),
-            "i".to_string(),
-            "j".to_string(),
-            "k".to_string(),
-            "l".to_string(),
-            "m".to_string(),
-            "n".to_string(),
-            "o".to_string(),
-            "p".to_string(),
+            SquareProps::new("a", false),
+            SquareProps::new("b", false),
+            SquareProps::new("c", false),
+            SquareProps::new("d", false),
+            SquareProps::new("e", false),
+            SquareProps::new("f", false),
+            SquareProps::new("g", false),
+            SquareProps::new("h", false),
+            SquareProps::new("i", false),
+            SquareProps::new("j", false),
+            SquareProps::new("k", false),
+            SquareProps::new("l", false),
+            SquareProps::new("m", false),
+            SquareProps::new("n", false),
+            SquareProps::new("o", false),
+            SquareProps::new("p", false),
         ]
     });
 
