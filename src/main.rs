@@ -72,7 +72,7 @@ fn Game() -> Element {
         ]
     });
 
-    let deselect = move |evt| {};
+    let toggle_square = move |evt| {};
     let shuffle = move |_| words.with_mut(|w| w.shuffle(&mut rand::rng()));
     let submit = move |evt| {};
     rsx! {
@@ -81,7 +81,7 @@ fn Game() -> Element {
             id: "buttons-container",
             div {
                 id: "buttons",
-                button { onclick: deselect, id: "deselect", "Deselect All"}
+                button { onclick: toggle_square, id: "deselect", "Deselect All"}
                 button { onclick: shuffle, id: "shuffle", "Shuffle"}
                 button { onclick: submit, id: "submit", "Submit"}
             }

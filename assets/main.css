@@ -25,6 +25,17 @@ body {
   aspect-ratio: 1 / 1;
 }
 
+.selected-grid-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid green;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  aspect-ratio: 1 / 1;
+}
+
 #title {
   text-align: center;
   padding-top: 10px;
