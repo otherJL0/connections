@@ -1,3 +1,4 @@
+use dioxus::logger::tracing::{info, Level};
 use dioxus::prelude::*;
 use rand::seq::SliceRandom;
 
@@ -29,10 +30,18 @@ fn Title() -> Element {
 
 #[component]
 fn WordTile(word: SquareProps) -> Element {
+    let mut highlighted = use_signal(|| word.highlighted);
+    let word_clone = word.word.clone();
+    let toggle = move |_| {
+        info!("Pressed key: {}", word_clone);
+        highlighted.toggle();
+    };
     rsx! {
         div {
-            class: "grid-item",
-            "{word.word}",
+            class: if highlighted() { "grid-item highlighted" } else { "grid-item" },
+            onclick: toggle,
+            id: "{word.word}",
+            "{word.word}"
         }
     }
 }
@@ -72,9 +81,14 @@ fn Game() -> Element {
         ]
     });
 
-    let toggle_square = move |evt| {};
-    let shuffle = move |_| words.with_mut(|w| w.shuffle(&mut rand::rng()));
-    let submit = move |evt| {};
+    let toggle_square = move |evt| info!("Buttone clicked");
+    let shuffle = move |_| {
+        info!("shuffle tiles...");
+        words.with_mut(|w| w.shuffle(&mut rand::rng()))
+    };
+    let submit = move |evt| {
+        info!("TODO");
+    };
     rsx! {
         Grid { words: words() }
         div {
@@ -90,11 +104,13 @@ fn Game() -> Element {
 }
 
 fn main() {
+    dioxus::logger::init(Level::INFO).expect("Failed to initialize logging");
     dioxus::launch(App);
 }
 
 #[component]
 fn App() -> Element {
+    info!("Starting app...");
     rsx! {
         document::Stylesheet { href : CSS }
         Title {}
